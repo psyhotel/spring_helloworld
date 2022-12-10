@@ -14,30 +14,6 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="3b8b039d-01e0-4439-92ab-425eeb04c051">
       <console name="mydbtest" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 1" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 1" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 1" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 1" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 1" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 1" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 1" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 1" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 1" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 1" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 1" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 2" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 2" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 2" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 2" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 3" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 3" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 3" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest 3" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest2" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest2" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest2" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest2" type="STANDARD" schema="mysql" session="Main" />
-      <console name="mydbtest2" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
