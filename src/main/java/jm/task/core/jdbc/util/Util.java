@@ -5,15 +5,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Util {
-    private static String dbName = "mydbtest";
-    private static String userName = "root";
-    private static String password = "root";
+    private static final String USER_NAME = "root";
+    private static final String PASSWORD = "root";
+
+    private static final String connectionURL = "jdbc:mysql://localhost:3306/mydbtest";
     public static Connection connection;
 
     public static Connection getConnection() {
-        String connectionURL = "jdbc:mysql://" + "localhost" + ":3306/" + dbName;
         try {
-            connection = DriverManager.getConnection(connectionURL, userName, password);
+            connection = DriverManager.getConnection(connectionURL, USER_NAME, PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         }
