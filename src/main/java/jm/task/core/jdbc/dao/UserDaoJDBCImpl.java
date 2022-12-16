@@ -8,13 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    private Connection connection = Util.getConnection();
+    private final Connection connection = Util.getConnection();
 
     @Override
-    public void createUsersTable() throws SQLException {
-        Statement statement = connection.createStatement();
-        statement.execute("create table if not exists user (id int auto_increment, name varchar(256), lastName varchar(256), age int(100), primary key (id))");
-        statement.close();
+    public void createUsersTable() {
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("CREATE TABLE IF NOT EXISTS user (id int auto_increment, name varchar(256), lastName varchar(256), age int(100), primary key (id))");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -28,8 +30,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
-        try (Connection connection = Util.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO user (name, lastName, age) VALUES (?, ?, ?)")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO user (name, lastName, age) VALUES (?, ?, ?)")) {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
             preparedStatement.setByte(3, age);
@@ -41,25 +42,28 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     @Override
-    public void removeUserById(long id) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("delete from user where id=?");
-        statement.setLong(1, id);
-        statement.execute();
-        statement.close();
+    public void removeUserById(long id) {
+        try (PreparedStatement statement = connection.prepareStatement("DELETE FROM user where id=?")) {
+            statement.setLong(1, id);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<User> getAllUsers() throws SQLException {
-        Statement statement = connection.createStatement();
-        statement.execute("select * from user");
-        ResultSet result = statement.getResultSet();
-        List<User> clients = new ArrayList<>();
-        while (result.next()) {
-            clients.add(new User(result.getString("name"), result.getString("lastName"), result.getByte("age")));
+    public List<User> getAllUsers() {
+        try (Statement statement = connection.createStatement()) {
+            statement.execute("select * from user");
+            ResultSet result = statement.getResultSet();
+            List<User> clients = new ArrayList<>();
+            while (result.next()) {
+                clients.add(new User(result.getString("name"), result.getString("lastName"), result.getByte("age")));
+            }
+            return clients;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        result.close();
-        statement.close();
-        return clients;
     }
 
     @Override
